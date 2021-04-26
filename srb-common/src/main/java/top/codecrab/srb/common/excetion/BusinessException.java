@@ -61,7 +61,7 @@ public class BusinessException extends RuntimeException {
     public BusinessException(ResponseEnum resultCodeEnum) {
         this.message = resultCodeEnum.getMessage();
         this.code = resultCodeEnum.getCode();
-        this.flag = resultCodeEnum.getFlag();
+        this.flag = resultCodeEnum.getSuccess();
     }
 
     /**
@@ -72,7 +72,7 @@ public class BusinessException extends RuntimeException {
         super(cause);
         this.message = resultCodeEnum.getMessage();
         this.code = resultCodeEnum.getCode();
-        this.flag = resultCodeEnum.getFlag();
+        this.flag = resultCodeEnum.getSuccess();
     }
 
 }

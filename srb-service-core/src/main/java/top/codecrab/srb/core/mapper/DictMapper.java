@@ -2,6 +2,9 @@ package top.codecrab.srb.core.mapper;
 
 import top.codecrab.srb.core.entity.Dict;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import top.codecrab.srb.core.entity.dto.ExcelDictDTO;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface DictMapper extends BaseMapper<Dict> {
 
+    /**
+     * 批量插入数据字典
+     *
+     * @param list 数据字典列表
+     * @return 数据库影响行数
+     */
+    int insertBatch(List<ExcelDictDTO> list);
 }

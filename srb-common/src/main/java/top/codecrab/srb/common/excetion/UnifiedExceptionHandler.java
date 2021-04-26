@@ -1,5 +1,6 @@
 package top.codecrab.srb.common.excetion;
 
+import com.alibaba.excel.exception.ExcelCommonException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.ConversionNotSupportedException;
 import org.springframework.beans.TypeMismatchException;
@@ -45,6 +46,12 @@ public class UnifiedExceptionHandler {
     public Result handleException(BusinessException e) {
         log.error(e.getMessage(), e);
         return Result.error(e.getCode(), e.getMessage(), e.getFlag());
+    }
+
+    @ExceptionHandler(ExcelCommonException.class)
+    public Result handleException(ExcelCommonException e) {
+        log.error(e.getMessage(), e);
+        return Result.setResult(ResponseEnum.EXCEL_TYPE_MISMATCH_ERROR);
     }
 
     /**

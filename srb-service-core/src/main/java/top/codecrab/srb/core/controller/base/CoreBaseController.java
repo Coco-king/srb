@@ -1,6 +1,7 @@
 package top.codecrab.srb.core.controller.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import top.codecrab.srb.core.service.DictService;
 import top.codecrab.srb.core.service.IntegralGradeService;
 
 /**
@@ -10,4 +11,6 @@ import top.codecrab.srb.core.service.IntegralGradeService;
 public class CoreBaseController {
     @Autowired
     protected IntegralGradeService integralGradeService;
+    @Autowired
+    protected DictService dictService;
 }

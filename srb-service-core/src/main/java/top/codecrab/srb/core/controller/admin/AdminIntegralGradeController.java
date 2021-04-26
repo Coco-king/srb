@@ -33,8 +33,6 @@ public class AdminIntegralGradeController extends CoreBaseController {
     @GetMapping("/list")
     public Result list() {
         List<IntegralGrade> grades = integralGradeService.list();
-        log.error("少时诵诗书所");
-        log.warn("少时诵诗书");
         return Result.ok("list", grades);
     }
 
@@ -64,6 +62,8 @@ public class AdminIntegralGradeController extends CoreBaseController {
             @RequestBody IntegralGrade integralGrade
     ) {
         Assert.notNull(integralGrade.getBorrowAmount(), ResponseEnum.BORROW_AMOUNT_NULL_ERROR);
+        Assert.notNull(integralGrade.getIntegralStart(), ResponseEnum.INTEGRAL_START_AMOUNT_NULL_ERROR);
+        Assert.notNull(integralGrade.getIntegralEnd(), ResponseEnum.INTEGRAL_END_AMOUNT_NULL_ERROR);
         boolean result = integralGradeService.save(integralGrade);
         return result ? Result.ok("保存成功") : Result.fail("保存失败");
     }

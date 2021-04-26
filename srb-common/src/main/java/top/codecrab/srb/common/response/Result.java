@@ -25,14 +25,14 @@ public class Result {
 
     private String message;
 
-    private Boolean flag;
+    private Boolean success;
 
     private Map<String, Object> data = new HashMap<>();
 
-    private Result(Integer code, String message, boolean flag) {
+    private Result(Integer code, String message, Boolean success) {
         this.code = code;
         this.message = message;
-        this.flag = flag;
+        this.success = success;
     }
 
     /**
@@ -42,7 +42,7 @@ public class Result {
         return new Result(
                 ResponseEnum.SUCCESS.getCode(),
                 ResponseEnum.SUCCESS.getMessage(),
-                ResponseEnum.SUCCESS.getFlag()
+                ResponseEnum.SUCCESS.getSuccess()
 
         );
     }
@@ -53,7 +53,7 @@ public class Result {
     public static Result ok(String message) {
         return new Result(
                 ResponseEnum.SUCCESS.getCode(),
-                message, ResponseEnum.SUCCESS.getFlag()
+                message, ResponseEnum.SUCCESS.getSuccess()
         );
     }
 
@@ -64,7 +64,7 @@ public class Result {
         return new Result(
                 ResponseEnum.SUCCESS.getCode(),
                 ResponseEnum.SUCCESS.getMessage(),
-                ResponseEnum.SUCCESS.getFlag(), data
+                ResponseEnum.SUCCESS.getSuccess(), data
         );
     }
 
@@ -75,7 +75,7 @@ public class Result {
         return new Result(
                 ResponseEnum.SUCCESS.getCode(),
                 ResponseEnum.SUCCESS.getMessage(),
-                ResponseEnum.SUCCESS.getFlag(),
+                ResponseEnum.SUCCESS.getSuccess(),
                 MapUtil.of(key, value)
         );
     }
@@ -86,7 +86,7 @@ public class Result {
     public static Result ok(String message, String key, Object value) {
         return new Result(
                 ResponseEnum.SUCCESS.getCode(),
-                message, ResponseEnum.SUCCESS.getFlag(),
+                message, ResponseEnum.SUCCESS.getSuccess(),
                 MapUtil.of(key, value)
         );
     }
@@ -98,15 +98,15 @@ public class Result {
         return new Result(
                 ResponseEnum.ERROR.getCode(),
                 ResponseEnum.ERROR.getMessage(),
-                ResponseEnum.ERROR.getFlag()
+                ResponseEnum.ERROR.getSuccess()
         );
     }
 
     /**
      * 服务器异常
      */
-    public static Result error(Integer code, String message, Boolean flag) {
-        return new Result(code, message, flag);
+    public static Result error(Integer code, String message, Boolean success) {
+        return new Result(code, message, success);
     }
 
     /**
@@ -116,7 +116,7 @@ public class Result {
         return new Result(
                 ResponseEnum.FAIL.getCode(),
                 ResponseEnum.FAIL.getMessage(),
-                ResponseEnum.FAIL.getFlag()
+                ResponseEnum.FAIL.getSuccess()
         );
     }
 
@@ -127,7 +127,7 @@ public class Result {
         return new Result(
                 ResponseEnum.FAIL.getCode(),
                 message,
-                ResponseEnum.FAIL.getFlag()
+                ResponseEnum.FAIL.getSuccess()
         );
     }
 
@@ -138,7 +138,7 @@ public class Result {
         return new Result(
                 responseEnum.getCode(),
                 responseEnum.getMessage(),
-                responseEnum.getFlag()
+                responseEnum.getSuccess()
         );
     }
 
@@ -152,8 +152,8 @@ public class Result {
         return this;
     }
 
-    public Result flag(Boolean flag) {
-        this.setFlag(flag);
+    public Result success(Boolean success) {
+        this.setSuccess(success);
         return this;
     }
 
