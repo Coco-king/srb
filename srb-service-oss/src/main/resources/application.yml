@@ -8,6 +8,6 @@ spring:
 aliyun:
   oss:
     endpoint: oss-cn-beijing.aliyuncs.com
-    keyId: LTAI5t9DebALXE2KZYq5axsp
-    keySecret: CwkuUBXMnQznhlmQUvhvzUVRlhVsM7
+    keyId: 
+    keySecret: 
     bucketName: srb-service-file
