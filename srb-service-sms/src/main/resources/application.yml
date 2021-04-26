@@ -22,7 +22,7 @@ spring:
 aliyun:
   sms:
     end-point: dysmsapi.aliyuncs.com
-    key-id: LTAI5t9DebALXE2KZYq5axsp
-    key-secret: CwkuUBXMnQznhlmQUvhvzUVRlhVsM7
+    key-id: 
+    key-secret: 
     template-code: SMS_211975463
     sign-name: 南浔北觅
