@@ -8,7 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import top.codecrab.srb.common.excetion.BusinessException;
 import top.codecrab.srb.common.response.ResponseEnum;
 import top.codecrab.srb.common.response.Result;
-import top.codecrab.srb.oss.controller.base.BaseController;
+import top.codecrab.srb.oss.controller.base.OssBaseController;
 
 import java.io.IOException;
 
@@ -20,7 +20,7 @@ import java.io.IOException;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/oss/file")
-public class FileController extends BaseController {
+public class FileControllerOss extends OssBaseController {
 
     /**
      * 文件上传

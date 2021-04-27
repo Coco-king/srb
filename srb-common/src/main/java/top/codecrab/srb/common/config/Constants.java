@@ -12,4 +12,9 @@ public class Constants {
     public static final String REDIS_SRB_CORE_DICT_LIST_KEY_FAST_LOAD = "srb:core:dictList:fastLoad";
 
     public static final String REDIS_SRB_SMS_CODE_KEY = "srb:sms:code:";
+
+
+    public static final String USER_DEFAULT_AVATAR = "https://srb-service-file.oss-cn-beijing.aliyuncs.com/avatar/default_avatar.jpg";
+    public static final Integer USER_STATUS_LOCKED = 0;
+    public static final Integer USER_STATUS_NORMAL = 1;
 }

@@ -8,7 +8,7 @@ import top.codecrab.srb.sms.service.SmsService;
  * @author codecrab
  * @since 2021年04月26日 16:24
  */
-public class BaseController {
+public class SmsBaseController {
     @Autowired
     protected SmsService smsService;
     @Autowired

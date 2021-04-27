@@ -1,20 +1,18 @@
 package top.codecrab.srb.sms.controller.api;
 
 import cn.hutool.core.map.MapUtil;
-import cn.hutool.core.util.NumberUtil;
 import cn.hutool.core.util.PhoneUtil;
 import cn.hutool.core.util.RandomUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.checker.regex.RegexUtil;
 import org.springframework.web.bind.annotation.*;
 import top.codecrab.srb.common.config.Constants;
 import top.codecrab.srb.common.excetion.Assert;
 import top.codecrab.srb.common.response.ResponseEnum;
 import top.codecrab.srb.common.response.Result;
-import top.codecrab.srb.sms.controller.base.BaseController;
+import top.codecrab.srb.sms.controller.base.SmsBaseController;
 import top.codecrab.srb.sms.utils.SmsProperties;
 
 import java.util.concurrent.TimeUnit;
@@ -28,7 +26,7 @@ import java.util.concurrent.TimeUnit;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/sms")
-public class ApiSmsController extends BaseController {
+public class ApiSmsControllerSms extends SmsBaseController {
 
     @ApiOperation("获取验证码")
     @GetMapping("/send/{mobile}")

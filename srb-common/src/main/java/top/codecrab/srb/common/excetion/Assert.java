@@ -25,7 +25,6 @@ public abstract class Assert {
         }
     }
 
-
     /**
      * 断言对象为空
      * 如果对象obj不为空，则抛出异常
