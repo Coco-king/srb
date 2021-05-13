@@ -17,7 +17,6 @@ import java.io.IOException;
  * @since 2021年04月26日 17:52
  */
 @Api(tags = "阿里云文件管理")
-@CrossOrigin
 @RestController
 @RequestMapping("/api/oss/file")
 public class FileControllerOss extends OssBaseController {

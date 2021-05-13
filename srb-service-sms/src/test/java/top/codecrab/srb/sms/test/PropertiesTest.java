@@ -1,11 +1,16 @@
 package top.codecrab.srb.sms.test;
 
+import cn.hutool.core.date.DateField;
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.map.MapUtil;
 import com.aliyun.dysmsapi20170525.models.SendSmsResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import top.codecrab.srb.sms.utils.SmsProperties;
 import top.codecrab.srb.sms.utils.SmsUtils;
+
+import java.util.Date;
 
 /**
  * @author codecrab
@@ -33,5 +38,13 @@ public class PropertiesTest {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Test
+    void name() {
+        DateTime date = DateUtil.parseDate("2012-06-01");
+        DateTime offset = DateUtil.offset(date, DateField.YEAR, -6).offset(DateField.MONTH, 3);
+
+        System.out.println(offset);
     }
 }

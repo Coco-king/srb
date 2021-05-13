@@ -48,6 +48,9 @@ public enum ResponseEnum {
     INTEGRAL_START_AMOUNT_NULL_ERROR(-212, false, "积分区间开始不能为空"),
     INTEGRAL_END_AMOUNT_NULL_ERROR(-213, false, "积分区间结束不能为空"),
     LAZY_LOAD_WITH_PARENT_ID_NULL_ERROR(-214, false, "指定为懒加载模式时父ID不能为空"),
+    DICT_CODE_NOT_FIND_ERROR(-215, false, "数据字典的编码未找到"),
+    LEND_AMOUNT_MUST_BE_MULTIPLES_OF_ONE_HUNDRED(-216, false, "投标金额必须是一百的倍数"),
+    LEND_AMOUNT_NULL_ERROR(-216, false, "投标金额不能为空"),
 
     USER_BIND_ID_CARD_EXIST_ERROR(-301, false, "身份证号码已绑定"),
     USER_NO_BIND_ERROR(302, false, "用户未绑定"),
@@ -56,6 +59,7 @@ public enum ResponseEnum {
     LEND_INVEST_ERROR(305, false, "当前状态无法投标"),
     LEND_FULL_SCALE_ERROR(306, false, "已满标，无法投标"),
     NOT_SUFFICIENT_FUNDS_ERROR(307, false, "余额不足，请充值"),
+    BORROWER_CANNOT_INVEST_ERROR(308, false, "借款人无法投资"),
 
     PAY_UNIFIED_ORDER_ERROR(401, false, "统一下单错误"),
 

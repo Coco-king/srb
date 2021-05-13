@@ -33,7 +33,9 @@ import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -136,6 +138,42 @@ public class DictServiceImpl extends ServiceImpl<DictMapper, Dict> implements Di
         }
 
         return dictVoList;
+    }
+
+    @Override
+    public List<DictVo> findByDictCode(String dictCode) {
+        Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>()
+                .eq("dict_code", dictCode));
+
+        Assert.notNull(dict, ResponseEnum.DICT_CODE_NOT_FIND_ERROR);
+        return this.listByParentId(dict.getId(), true);
+    }
+
+    @Override
+    public Map<String, Object> findByDictCodes(List<String> dictCodes) {
+        return dictCodes.stream().collect(Collectors.toMap(
+                Function.identity(),
+                this::findByDictCode,
+                (oldVal, currVal) -> currVal)
+        );
+    }
+
+    @Override
+    public String getNameByParentDictCodeAndValue(String dictCode, Integer value) {
+        Dict parentDict = baseMapper.selectOne(new QueryWrapper<Dict>()
+                .eq("dict_code", dictCode));
+        if (parentDict == null) {
+            return "";
+        }
+
+        Dict dict = baseMapper.selectOne(new QueryWrapper<Dict>()
+                .eq("parent_id", parentDict.getId())
+                .eq("value", value));
+        if (dict == null) {
+            return "";
+        }
+
+        return dict.getName();
     }
 
     /**

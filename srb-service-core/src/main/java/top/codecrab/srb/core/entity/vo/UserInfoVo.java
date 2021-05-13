@@ -12,6 +12,9 @@ import lombok.Data;
 @ApiModel(description = "用户信息对象")
 public class UserInfoVo {
 
+    @ApiModelProperty(value = "编号")
+    private Long id;
+
     @ApiModelProperty(value = "用户姓名")
     private String name;
 

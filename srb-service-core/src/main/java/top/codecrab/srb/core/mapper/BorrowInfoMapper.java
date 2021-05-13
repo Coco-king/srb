@@ -1,7 +1,9 @@
 package top.codecrab.srb.core.mapper;
 
-import top.codecrab.srb.core.entity.BorrowInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import top.codecrab.srb.core.entity.BorrowInfo;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +15,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface BorrowInfoMapper extends BaseMapper<BorrowInfo> {
 
+    /**
+     * 查询BorrowInfo扩展的列表
+     *
+     * @return BorrowInfo扩展列表
+     */
+    List<BorrowInfo> selectBorrowInfoList();
 }

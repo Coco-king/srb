@@ -1,19 +1,20 @@
 package top.codecrab.srb.sms.controller.api;
 
-import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.PhoneUtil;
 import cn.hutool.core.util.RandomUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import top.codecrab.srb.common.config.Constants;
 import top.codecrab.srb.common.excetion.Assert;
 import top.codecrab.srb.common.response.ResponseEnum;
 import top.codecrab.srb.common.response.Result;
 import top.codecrab.srb.sms.controller.base.SmsBaseController;
-import top.codecrab.srb.sms.utils.SmsProperties;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +24,6 @@ import java.util.concurrent.TimeUnit;
  */
 @Api(tags = "短信管理")
 @Slf4j
-@CrossOrigin
 @RestController
 @RequestMapping("/api/sms")
 public class ApiSmsControllerSms extends SmsBaseController {
@@ -39,8 +39,13 @@ public class ApiSmsControllerSms extends SmsBaseController {
         //断言是中国的手机号码
         Assert.isTrue(PhoneUtil.isMobile(mobile), ResponseEnum.MOBILE_ERROR);
 
+        // 远程调用用户查询接口，判断手机号是否已注册
+        boolean isExist = userInfoClient.checkMobile(mobile);
+        Assert.isFalse(isExist, ResponseEnum.MOBILE_EXIST_ERROR);
+
         String code = RandomUtil.randomNumbers(4);
-        smsService.sendSms(mobile, SmsProperties.TEMPLATE_CODE, MapUtil.of("code", code));
+        // smsService.sendSms(mobile, SmsProperties.TEMPLATE_CODE, MapUtil.of("code", code));
+
         redisTemplate.opsForValue().set(Constants.REDIS_SRB_SMS_CODE_KEY + mobile, code, 5, TimeUnit.MINUTES);
         return Result.ok("验证码发送成功");
     }

@@ -12,6 +12,8 @@
         <module>srb-service-core</module>
         <module>srb-service-sms</module>
         <module>srb-service-oss</module>
+        <module>srb-service-gateway</module>
+        <module>srb-rabbit-mq</module>
     </modules>
     <name>srb</name>
     <description>Demo project for Spring Boot</description>

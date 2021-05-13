@@ -1,16 +1,17 @@
 package top.codecrab.srb.core.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -22,7 +23,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="TransFlow对象", description="交易流水表")
+@ApiModel(value = "TransFlow对象", description = "交易流水表")
 public class TransFlow implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,6 +37,9 @@ public class TransFlow implements Serializable {
 
     @ApiModelProperty(value = "用户名称")
     private String userName;
+
+    @ApiModelProperty(value = "相对的id（标的相关：标的no  用户相关：用户id）")
+    private String withId;
 
     @ApiModelProperty(value = "交易单号")
     private String transNo;

@@ -2,6 +2,7 @@ package top.codecrab.srb.sms;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -9,6 +10,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @since 2021年04月26日 15:01
  */
 @SpringBootApplication
+@EnableFeignClients
 @ComponentScan({"top.codecrab.srb"})
 public class ServiceSmsApplication {
 

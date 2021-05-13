@@ -22,6 +22,11 @@
             <artifactId>srb-service-base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>top.codecrab</groupId>
+            <artifactId>srb-rabbit-mq</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
         <dependency>
             <groupId>mysql</groupId>

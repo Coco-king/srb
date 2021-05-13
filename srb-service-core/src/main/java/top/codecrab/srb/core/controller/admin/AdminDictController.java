@@ -3,7 +3,6 @@ package top.codecrab.srb.core.controller.admin;
 
 import com.alibaba.excel.EasyExcel;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +26,6 @@ import java.util.List;
  * @since 2021-04-22
  */
 @Api(tags = "数据字典管理")
-@CrossOrigin
 @RestController
 @RequestMapping("/admin/core/dict")
 public class AdminDictController extends CoreBaseController {

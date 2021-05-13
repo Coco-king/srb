@@ -42,9 +42,22 @@ public abstract class Assert {
      *
      * @param expression 是否成功
      */
-    public static void isTrue(boolean expression, ResponseEnum responseEnum) {
+    public static void isTrue(Boolean expression, ResponseEnum responseEnum) {
         if (BooleanUtil.isFalse(expression)) {
             log.info("fail...............");
+            throw new BusinessException(responseEnum);
+        }
+    }
+
+    /**
+     * 断言表达式为假
+     * 如果不为假，则抛出异常
+     *
+     * @param expression 是否成功
+     */
+    public static void isFalse(Boolean expression, ResponseEnum responseEnum) {
+        if (BooleanUtil.isTrue(expression)) {
+            log.info("true...............");
             throw new BusinessException(responseEnum);
         }
     }

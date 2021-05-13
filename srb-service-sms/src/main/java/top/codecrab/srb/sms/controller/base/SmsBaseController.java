@@ -2,6 +2,7 @@ package top.codecrab.srb.sms.controller.base;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import top.codecrab.srb.sms.client.CoreUserInfoClient;
 import top.codecrab.srb.sms.service.SmsService;
 
 /**
@@ -13,4 +14,6 @@ public class SmsBaseController {
     protected SmsService smsService;
     @Autowired
     protected RedisTemplate<String, Object> redisTemplate;
+    @Autowired
+    protected CoreUserInfoClient userInfoClient;
 }

@@ -1,16 +1,21 @@
 package top.codecrab.srb.core.entity;
 
-import java.math.BigDecimal;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import java.time.LocalDateTime;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.NotNull;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <p>
@@ -22,7 +27,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@ApiModel(value="BorrowInfo对象", description="借款信息表")
+@ApiModel(value = "BorrowInfo对象", description = "借款信息表")
 public class BorrowInfo implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -34,18 +39,26 @@ public class BorrowInfo implements Serializable {
     @ApiModelProperty(value = "借款用户id")
     private Long userId;
 
+    @NotNull(message = "借款金额不能为空")
+    @Range(min = 100, message = "借款金额最小为100")
     @ApiModelProperty(value = "借款金额")
     private BigDecimal amount;
 
+    @NotNull(message = "借款期限不能为空")
+    @Range(min = 1, max = 24, message = "借款期限为1-24个月")
     @ApiModelProperty(value = "借款期限")
     private Integer period;
 
+    @NotNull(message = "年化利率不能为空")
     @ApiModelProperty(value = "年化利率")
     private BigDecimal borrowYearRate;
 
+    @NotNull(message = "还款方式不能为空")
+    @Range(min = 1, max = 4, message = "还款方式有误")
     @ApiModelProperty(value = "还款方式 1-等额本息 2-等额本金 3-每月还息一次还本 4-一次还本")
     private Integer returnMethod;
 
+    @NotNull(message = "资金用途不能为空")
     @ApiModelProperty(value = "资金用途")
     private Integer moneyUse;
 
@@ -63,5 +76,19 @@ public class BorrowInfo implements Serializable {
     @TableLogic
     private Boolean deleted;
 
+    /**
+     * 扩展字段
+     */
+    @ApiModelProperty(value = "姓名")
+    @TableField(exist = false)
+    private String name;
+
+    @ApiModelProperty(value = "手机")
+    @TableField(exist = false)
+    private String mobile;
+
+    @ApiModelProperty(value = "其他参数")
+    @TableField(exist = false)
+    private Map<String, Object> param = new HashMap<>();
 
 }
